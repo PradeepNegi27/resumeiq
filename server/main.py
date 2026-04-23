@@ -5,10 +5,13 @@ import pymupdf
 import os
 import json
 import sqlite3
+from dotenv import load_dotenv
 from database import init_db, save_session, get_all_sessions
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-import os
+
+load_dotenv()  # ← this line was missing!
+
 app = FastAPI()
 
 app.add_middleware(
@@ -20,7 +23,7 @@ app.add_middleware(
 
 init_db()
 
-client = Groq(api_key=REMOVED" ")
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def extract_pdf_text(file_bytes: bytes) -> str:
     doc = pymupdf.open(stream=file_bytes, filetype="pdf")
