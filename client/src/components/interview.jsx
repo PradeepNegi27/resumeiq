@@ -102,7 +102,7 @@ export default function Interview() {
       formData.append('answer', answer)
       formData.append('candidate_name', candidateName)
 
-      const res = await axios.post('http://127.0.0.1:8000/api/evaluate', formData)
+      const res = await axios.post('https://resumeiq-31bx.onrender.com/api/evaluate', formData)
 
       if (res.data.success) {
         const newEvaluations = [...evaluations, {
@@ -117,7 +117,7 @@ export default function Interview() {
           const totalScore = newEvaluations.reduce((sum, e) => sum + e.evaluation.score, 0)
           const avgScore = totalScore / newEvaluations.length
 
-          await axios.post('http://127.0.0.1:8000/api/save-session', {
+          await axios.post('https://resumeiq-31bx.onrender.com/api/save-session', {
             name: candidateName,
             job_role: localStorage.getItem('jobRole') || 'Unknown',
             total_score: avgScore,

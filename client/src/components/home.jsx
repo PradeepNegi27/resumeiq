@@ -25,7 +25,7 @@ export default function Home() {
       formData.append('resume', resume)
       formData.append('job_description', jobDescription)
 
-      const res = await axios.post('http://127.0.0.1:8000/api/upload', formData)
+      const res = await axios.post('https://resumeiq-31bx.onrender.com/api/upload', formData)
 
       if (res.data.success) {
         localStorage.setItem('questions', JSON.stringify(res.data.questions))

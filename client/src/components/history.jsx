@@ -13,7 +13,7 @@ export default function History() {
   const fetchSessions = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/sessions')
+      const res = await axios.get('https://resumeiq-31bx.onrender.com/api/sessions')
       if (res.data.success) setSessions(res.data.sessions)
     } catch (err) {
       console.error(err)
@@ -24,7 +24,7 @@ export default function History() {
   const clearHistory = async () => {
     if (window.confirm('Are you sure you want to clear all history?')) {
       try {
-        await axios.delete('http://127.0.0.1:8000/api/sessions')
+        await axios.delete('https://resumeiq-31bx.onrender.com/api/sessions')
         setSessions([])
       } catch (err) {
         console.error(err)
